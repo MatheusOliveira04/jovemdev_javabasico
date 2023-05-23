@@ -1,12 +1,12 @@
-package br.com.trier.aula_1;
+package br.com.trier.aula_01;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import br.com.trier.aula_1.model.Pessoa;
-import br.com.trier.aula_1.services.ImcCalc;
+import br.com.trier.aula_01.model.Pessoa;
+import br.com.trier.aula_01.services.ImcCalc;
 
 public class Principal {
 
@@ -19,7 +19,10 @@ public class Principal {
 		
 		System.out.print("Digite a quantidade de pessoas para calcular o IMC: ");
 		int n = ler.nextInt();
-		
+		while(n <= 0) {
+			System.out.println("Número inválido. Tente novamente!");
+			n = ler.nextInt();
+		}
 		
 		for (int i = 0; i < n; i++) {
 		
@@ -28,7 +31,11 @@ public class Principal {
 		String nome = ler.nextLine();
 		
 		System.out.print("Digite o sexo(m/f): ");
-		char sexo = ler.next().charAt(0);
+		char sexo = ler.next().toLowerCase().charAt(0);
+		while(n <= 0) {
+			System.out.println("Genero inválido. Tente novamente!");
+			sexo = ler.next().toLowerCase().charAt(0);
+		}
 			
 		System.out.print("Digite seu peso(kg): ");
 		double peso = ler.nextDouble();

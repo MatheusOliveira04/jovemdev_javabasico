@@ -1,4 +1,4 @@
-package br.com.trier.aula_1.model;
+package br.com.trier.aula_01.model;
 
 public class Pessoa {
 

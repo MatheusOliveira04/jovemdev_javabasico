@@ -1,4 +1,4 @@
-package br.com.trier.aula_1.services;
+package br.com.trier.aula_01.services;
 
 public class ImcCalc {
 
@@ -9,7 +9,7 @@ public class ImcCalc {
 	public static String mostreIMC(double peso, double altura, char sexo) {
 		double imc = calculaIMC(peso, altura);
 		String resultadoIMC = null;
-
+		
 		if (sexo == 'm') {
 			if (imc < 20.7) {
 				resultadoIMC = "Abaixo do peso";
