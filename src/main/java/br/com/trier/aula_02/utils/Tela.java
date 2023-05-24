@@ -51,6 +51,8 @@ private static int totalObjInstanciados = 0; //quantidade de carros Instânciado
 
 		int anoFinal = EscolheAtributos.AnoSelecionar();
 		
+		ValidaAno.validar(anoFinal); //valida ano
+		
 		//verificar e imprimir os objetos com as condições desejadas
 		String objSelecionados = "";
 	for (Carro carro : list) {
