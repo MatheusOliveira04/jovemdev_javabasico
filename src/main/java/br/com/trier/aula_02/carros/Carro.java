@@ -1,7 +1,11 @@
 package br.com.trier.aula_02.carros;
 
 import br.com.trier.aula_02.enums.CorCarro;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Carro {
 
 	private String marca;
