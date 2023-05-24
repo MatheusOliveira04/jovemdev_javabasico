@@ -6,9 +6,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import br.com.trier.aula_02.carros.Carro;
-import br.com.trier.aula_02.enums.CorCarro;
-import br.com.trier.aula_02.services.ValidaAno;
-import br.com.trier.aula_02.services.VerificaEnumCorCarro;
 import br.com.trier.aula_02.utils.Tela;
 
 public class Principal {
@@ -18,77 +15,28 @@ public class Principal {
 		List<Carro> list = new ArrayList<>();
 
 		boolean terminar = false;
-		while(terminar == false) {
-			
-		int numero = Tela.opcao();
+		while (terminar == false) {
 
-		if (numero == 1) {
-			String marca = JOptionPane.showInputDialog("Digite a marca do carro");
+			int numero;
+			do {
+				numero = Tela.opcao();
+			} while (numero < 1 || numero > 5);
 
-			int ano = Integer.parseInt(JOptionPane.showInputDialog("Digite o ano(yyyy) "
-					+ "\nAno válido até 1950"));
-			ValidaAno.validar(ano);
-			
-
-			String cor = JOptionPane.showInputDialog("Digite a cor "
-					+ "\npreto/prata/branco/vermelho/azul/outro");
-			while (VerificaEnumCorCarro.verifica((cor)) == null) {
-				cor = JOptionPane.showInputDialog("Cor inválida " + "\nDigite a cor "
-						+ "\npreto/prata/branco/vermelho/azul/outro");
+			if(numero == 1) {
+			Tela.cadastrar(numero, list);
 			}
-			String corToUpperCase = cor.toUpperCase();
+			else if(numero == 2) {
+			Tela.listarCarroPeriodoFabricacao(list);
+			} else if(numero == 3) {
+			Tela.listarCarroPorMarca(list);
+			} else if(numero == 4) {
+			Tela.listarCarroPorCor(list);
+			} else if(numero == 5) {
+				terminar = true;
+				JOptionPane.showMessageDialog(null, "Fim");
+			}
 
-			list.add(new Carro(marca, ano, CorCarro.valueOf(corToUpperCase)));
-		} else if (numero == 2) {
-				int anoInicial = Integer.parseInt(JOptionPane
-						.showInputDialog("Digite o ano inicial dos carros que deseja(yyyy)"
-								+ "\nAno válido até 1950"));
-				
-				
-				while (anoInicial < 1950 || anoInicial > 2023) {
-					anoInicial = Integer.parseInt(JOptionPane.showInputDialog("Número inválido! " 
-				+ "\nDigite novamente(yyyy)"));
-				}
-				
-				int anoFinal = Integer.parseInt(JOptionPane
-						.showInputDialog("Digite o ano Final dos carros que deseja(yyyy)"
-								+ "\nAno válido até 1950"));
-				while (anoFinal < 1950 || anoFinal > 2023) {
-					anoFinal = Integer.parseInt(JOptionPane.showInputDialog("Número inválido! " 
-				+ "\nDigite novamente(yyyy)"));
-				}
-				
-				for (Carro carro : list) {
-					if(anoInicial >= carro.getAno() && anoFinal <= carro.getAno()) {
-						JOptionPane.showMessageDialog(null, carro.toString());
-						}
-					}
-				} else if(numero == 3){
-						String marca = JOptionPane.showInputDialog("Digite a marca do carro");
-						for (Carro carro : list) {
-							if(marca.equalsIgnoreCase(carro.getMarca())) {
-								JOptionPane.showMessageDialog(null, carro.toString());
-							}
-						}
-					}
-				 else if(numero == 4) {
-					 String cor = JOptionPane.showInputDialog("Digite a cor "
-								+ "\npreto/prata/branco/vermelho/azul/outro");
-					 for (Carro carro : list) {
-						if(cor.toUpperCase().equals(carro.getCor())) {
-							JOptionPane.showMessageDialog(null, carro.toString());
-						}
-					}
-					
-				} else {
-					if(numero == 5) {
-						terminar = true;
-						JOptionPane.showMessageDialog(null, "Fim");
-					}
-				}
-			
-		
 		}
-		
+
 	}
 }

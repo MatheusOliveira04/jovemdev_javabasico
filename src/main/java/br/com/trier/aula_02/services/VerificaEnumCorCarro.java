@@ -2,20 +2,20 @@ package br.com.trier.aula_02.services;
 
 public class VerificaEnumCorCarro {
 
-	public static String verifica(String cor) {
+	public static String verifica(int valorCor) {
 		String verifica = null;
-		if (cor.toUpperCase().equals("PRETO")) {
+		if (valorCor == 1) {
 			return "PRETO";
 		}
-		if (cor.toUpperCase().equals("BRANCO")) {
+		if (valorCor == 2) {
 			verifica = "BRANCO";
-		} if (cor.toUpperCase().equals("PRATA")) {
+		} if (valorCor == 3) {
 			verifica = "PRATA";
-		} if (cor.toUpperCase().equals("VERMELHO")) {
+		} if (valorCor == 4) {
 			verifica = "VERMELHO";
-		} if (cor.toUpperCase().equals("AZUL")) {
+		} if (valorCor == 5) {
 			verifica = "AZUL";
-		} if (cor.toUpperCase().equals("OUTRO")) {
+		} if (valorCor == 6) {
 			verifica = "OUTRO";
 		}
 		return verifica;
