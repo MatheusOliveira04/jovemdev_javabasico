@@ -5,14 +5,14 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import br.com.trier.aula_03.model.Time;
+import br.com.trier.aula_03.model.Times;
 import br.com.trier.aula_03.util.Tela;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		List<Time> list = new ArrayList<>();
+		List<Times> list = new ArrayList<>();
 		
 		boolean fim = false;
 		while (fim == false) {
@@ -21,7 +21,9 @@ public class Principal {
 
 			switch (n) {
 			case 1:
-				Tela.Cadastrar(list);
+				Times times = new Times();
+				times.cadastrarTimes();
+				list.add(times);
 				break;
 			case 2:
 				Tela.listarJogadoresDoTime(list);	
