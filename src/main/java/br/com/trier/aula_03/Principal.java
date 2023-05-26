@@ -31,7 +31,7 @@ public class Principal {
 			case 3:
 				Tela.artilheiroDoCampeonato(list);
 				break;
-				case 4: 
+			case 4: 
 					Tela.timeMaisMarcouGols(list);
 					break;
 			case 5 :
