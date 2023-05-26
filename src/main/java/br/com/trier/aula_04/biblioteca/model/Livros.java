@@ -19,18 +19,6 @@ public class Livros {
 	private double preco;
 	private List<Autores> autores = new ArrayList<>();
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public List<Autores> getAutores() {
-		return autores;
-	}
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -38,6 +26,7 @@ public class Livros {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+	
 	public void adicionarAutores(Autores autores) {
 		this.autores.add(autores);
 	}
@@ -74,12 +63,11 @@ public class Livros {
 	public void ListarTodosLivros(List<Livros> list) {
 		String frase = "";
 
-
 		for (Livros livros : list) {
 			frase += "Título: " + livros.getTitulo() + " Preço: " + livros.getPreco() + "\n"
 					+ livros.getAutores();
 		}
-		JOptionPane.showInputDialog(frase);
+		JOptionPane.showMessageDialog(null,frase);
 	}
 
 	public int validaQuantidades() {
@@ -107,7 +95,6 @@ public class Livros {
 			return true;
 		}
 	}
-
 
 	private boolean validaPreco(double preco) {
 		if (preco < 0.0) {

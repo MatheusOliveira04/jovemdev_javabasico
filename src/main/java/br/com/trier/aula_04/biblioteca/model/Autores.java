@@ -1,5 +1,8 @@
 package br.com.trier.aula_04.biblioteca.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import br.com.trier.aula_04.biblioteca.enums.EnumSexo;
@@ -15,18 +18,7 @@ public class Autores {
 	private String nome;
 	private EnumSexo sexo;
 	private int idade;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public EnumSexo getSexo() {
-		return sexo;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
+	private List<Livros> livros = new ArrayList<>();
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -40,6 +32,10 @@ public class Autores {
 		this.idade = idade;
 	}
 
+	public void adicionar(Livros livro) {
+		livros.add(livro);
+	}
+	
 	public void cadastrar(Autores autor) {
 
 		String nome;

@@ -15,7 +15,7 @@ public enum EnumSexo {
 		this.descricao = descricao;
 	}
 	
-	static EnumSexo buscaPorCodigo(int codigo) {
+	public static EnumSexo buscaPorCodigo(int codigo) {
 		for(EnumSexo sexo : EnumSexo.values()) {
 			if(codigo == sexo.codigo) {
 				return sexo;
@@ -27,7 +27,7 @@ public enum EnumSexo {
 	public static EnumSexo escolherSexo() {
 		int escolha;
 		do {
-		String menu = "Escolha uma sexo";
+		String menu = "Escolha um sexo";
 		for(EnumSexo sexo : EnumSexo.values()) {
 			menu += "\n" + sexo.codigo + " - " + sexo.descricao;
 		}

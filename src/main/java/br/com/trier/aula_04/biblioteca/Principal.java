@@ -30,7 +30,18 @@ public class Principal {
 			case 3:
 				Livros livro = new Livros();
 				livro.ListarTodosLivros(livroList);
-				
+				break;
+			case 4:
+				Menu.pesquisarPorAutor(livroList, autoresList);
+				break;
+			case 5:
+				Menu.faixaValor(livroList);
+				break;
+			case 6:
+				Menu.listarLivrosDeCriancas(livroList);
+				break;
+			case 7:
+				Menu.livroEscritosSeparadosSexo(livroList, autoresList);
 				break;
 			case 8: 
 				fim = true;
