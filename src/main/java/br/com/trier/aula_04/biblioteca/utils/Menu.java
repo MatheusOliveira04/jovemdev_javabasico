@@ -55,81 +55,67 @@ public class Menu {
 			if (livroListVariavel.getPreco() >= valorInicial && livroListVariavel.getPreco() <= valorFinal) {
 				listaFaixaLivros.add(livroListVariavel);
 			}
-			String frase = "Lista de livros por faixa de valor";
-			ListParaString(listaFaixaLivros, frase);
 		}
+		String frase = "Lista de livros por faixa de valor";
+		ListLivroParaString(listaFaixaLivros, frase);
 	}
 
 	public static void pesquisarPorAutor(List<Livros> list, List<Autores> subList) {
 		String nomeAutor = JOptionPane.showInputDialog("Digite o nome do autor que deseja");
 
-		String autorEscolhido = "";
-		for (Autores a : subList) {
-			if (a.getNome().equalsIgnoreCase(nomeAutor) == true) {
-				autorEscolhido = a.getNome();
-			}
-		}
-
-		String str = "";
-		List<Livros> listaAdiciona = list;
-		for (Livros l : list) {
-			for (int i = 0; i < l.getAutores().size(); i++) {
-				if (l.getAutores().get(i).getNome().equalsIgnoreCase(autorEscolhido)) {
-					str += listaAdiciona.get(i).getTitulo() + " " + listaAdiciona.get(i).getPreco() + "\n";
+		List<Livros> livro = new ArrayList<>();
+		List<Autores> autor = new ArrayList<>();
+		
+		String guardaLivro = "";
+		
+			for(Livros l : list) {
+				for(Autores a : subList) {
+				if (a.buscarNomeAutorNoLivro(nomeAutor)) {
+					autor.add(a);
+				guardaLivro += " Titulo: " + l.getTitulo() + " Preço: R$" + l.getPreco() + "\n";
 				}
-			}
+					}
 		}
-
-		JOptionPane.showMessageDialog(null, "Autor: " + autorEscolhido + "\nLivros feitos: " + str);
+		JOptionPane.showMessageDialog(null, guardaLivro);
 	}
 
 	public static void listarLivrosDeCriancas(List<Livros> list) {
-		String frase = "";
 
-		Livros livro = new Livros();
-		Autores autor = new Autores();
-		int i;
-		int j = -1;
+		List<Livros> livro = new ArrayList<>();
+
 		for (Livros l : list) {
-			j++;
-			i = 0;
-			for (int k = 0; k < l.getAutores().size(); k++) {
-				autor = l.getAutores().get(i);
-				i++;
-				if (autor.getIdade() <= 12) {
-					frase += "Nome autor menor que 12 anos: \n" + autor.getNome() + "\n";
-					frase += "Título: " +	list.get(j).getTitulo() + " Preço: "
-							+ list.get(j).getPreco() + "\n";
-				}
+			if (l.buscarAutorCriancaLivro()) {
+				livro.add(l);
 			}
 		}
-		JOptionPane.showMessageDialog(null, frase);
+		String ret = "";
+		ListLivroParaString(livro, ret);
 	}
-
-	public static void livroEscritosSeparadosSexo(List<Livros> list, List<Autores> subList) {	
 	
+
+	public static void listarLivroPorSexoAutor(List<Livros> list) {
+
+		List<Livros> livros = new ArrayList<>();
+
 		EnumSexo sexo = EnumSexo.escolherSexo();
-		
-		String frase = "";
-		Autores autor = new Autores();
-		Livros livro = new Livros();
 
-			for(Autores a : subList) {
-				if(sexo == (autor.getSexo())) {
-					JOptionPane.showMessageDialog(null, a.getNome() + livro);
-				}
+		for (Livros l : list) {
+			if (l.buscarSexoAutorNoLivro(sexo) == true) {
+				livros.add(l);
 			}
-	}
-		
-		
-	
-	
-	private static void ListParaString(List<Livros> list, String frase) {
-		frase += "";
-		for (Livros livros : list) {
-			frase += "Título: " + livros.getTitulo() + " Preço: " + livros.getPreco() + "\n" + livros.getAutores();
 		}
-		JOptionPane.showMessageDialog(null, frase);
+		String ret = "";
+		ListLivroParaString(livros, ret);
+
+	}
+	
+
+	private static void ListLivroParaString(List<Livros> list, String ret) {
+		ret += "";
+		for (Livros l : list) {
+			ret += l;
+		}
+		JOptionPane.showMessageDialog(null, ret);
 	}
 
 }

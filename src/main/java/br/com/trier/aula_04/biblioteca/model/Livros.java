@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import br.com.trier.aula_04.biblioteca.utils.Menu;
+import br.com.trier.aula_04.biblioteca.enums.EnumSexo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -104,10 +104,44 @@ public class Livros {
 		}
 	}
 
+	public boolean buscarAutorCriancaLivro() {
+		
+		for (Autores autor : getAutores()) {
+			if(autor.getIdade() <= 12) {
+				return true;
+			} 
+		}
+			return false;
+	}
+	
+	public boolean buscarSexoAutorNoLivro(EnumSexo sexo) {
+		boolean crianca = false;
+		for(Autores autor : getAutores()) {
+			if(autor.getSexo().equals(sexo)) {
+				crianca = true;
+			} else {
+				crianca = false;
+			}
+		}
+		return crianca;
+	}
+
+	public boolean buscarNomeAutorNoLivro(String nome) {
+		boolean contem = false;
+		for (Autores a : getAutores()) {
+			if(a.getNome().equalsIgnoreCase(nome)) {
+				contem = true;
+			} else {
+				contem = false;
+			}
+		}
+		return contem;
+	}
+	
 	@Override
 	public String toString() {
 		return "Livros: \nTítulo do livro: " + titulo + "\nPreço: R$" + String.format("%.2f", preco) + "\nAutores: "
-				+ autores + "\n";
+				+ getAutores().toString() + "\n";
 	}
 
 }

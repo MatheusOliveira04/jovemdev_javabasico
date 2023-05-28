@@ -19,7 +19,7 @@ public class Autores {
 	private EnumSexo sexo;
 	private int idade;
 	private List<Livros> livros = new ArrayList<>();
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -53,7 +53,17 @@ public class Autores {
 		autor.setSexo(sexo);
 		
 	}
-
+	public boolean buscarNomeAutorNoLivro(String nome) {
+		boolean contem = false;
+			if(getNome().equalsIgnoreCase(nome)) {
+				contem = true;
+			} else {
+				contem = false;
+			
+		}
+		return contem;
+	}
+	
 	private boolean validaNome(String nome) {
 		if (nome.trim() == "") {
 			return false;
@@ -74,10 +84,11 @@ public class Autores {
 		}
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Nome do autor: " + nome + ", Sexo: " + sexo + " Idade: " + idade
-				+ "\n_____________________________________________________________\n";
+				+ "\n";
 	}
 
 }

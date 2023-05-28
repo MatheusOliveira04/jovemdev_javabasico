@@ -41,7 +41,7 @@ public class Principal {
 				Menu.listarLivrosDeCriancas(livroList);
 				break;
 			case 7:
-				Menu.livroEscritosSeparadosSexo(livroList, autoresList);
+				Menu.listarLivroPorSexoAutor(livroList);
 				break;
 			case 8: 
 				fim = true;
