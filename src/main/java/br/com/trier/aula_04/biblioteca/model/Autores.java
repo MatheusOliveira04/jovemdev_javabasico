@@ -42,7 +42,7 @@ public class Autores {
 		do {
 			nome = JOptionPane.showInputDialog("Digite o nome");
 		} while (validaNome(nome) == false);
-		sexo = EnumSexo.escolherSexo();
+		EnumSexo sexo = EnumSexo.escolherSexo();
 		int idade;
 		do {
 			idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a idade"));
