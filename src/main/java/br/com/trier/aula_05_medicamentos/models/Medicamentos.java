@@ -8,11 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Medicamentos {
 	
 	@Setter
@@ -32,6 +33,8 @@ public class Medicamentos {
 		getContraIndicacoes().add(contraIndicacoes);
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Medicamentos [name=" + name + ", admin=" + admin + ", indicacoes=" + indicacoes + ", contraIndicacoes="
