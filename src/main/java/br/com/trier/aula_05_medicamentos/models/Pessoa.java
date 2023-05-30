@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Pessoa {
 
@@ -22,9 +21,17 @@ public class Pessoa {
 	private String sintoma;
 	private List<String> alergias = new ArrayList<>();
 	private List<Medicamentos> medicamentos = new ArrayList<>();
-	
+
 	public void addAlergias(String alergias) {
 		getAlergias().add(alergias);
 	}
 
+	public boolean addMedicamentos(Medicamentos medicamento) {
+		if(medicamento.verificaIndicacao(sintoma) == true 
+				&& medicamento.verificaContraIndicacoes(alergias) != true) {
+		getMedicamentos().add(medicamento);
+		return true;
+		}
+		return false;
+	}
 }

@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@NoArgsConstructor
 @RequiredArgsConstructor
 public class Medicamentos {
 	
@@ -33,13 +32,11 @@ public class Medicamentos {
 		getContraIndicacoes().add(contraIndicacoes);
 	}
 
-	
-	
-	@Override
-	public String toString() {
-		return "Medicamentos [name=" + name + ", admin=" + admin + ", indicacoes=" + indicacoes + ", contraIndicacoes="
-				+ contraIndicacoes + "]";
+	public boolean verificaIndicacao(String sintoma) {
+		return indicacoes.contains(sintoma);
 	}
 	
-	
+	public boolean verificaContraIndicacoes(List<String> alergias) {
+		return contraIndicacoes.contains(alergias);
+	}
 }

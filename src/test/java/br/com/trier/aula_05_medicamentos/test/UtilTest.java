@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import br.com.trier.aula_05_medicamentos.Enums.EnumAdministracao;
 import br.com.trier.aula_05_medicamentos.models.Medicamentos;
 import br.com.trier.aula_05_medicamentos.models.Pessoa;
-import br.com.trier.aula_05_medicamentos.utils.*;
+import br.com.trier.aula_05_medicamentos.utils.Util;
 
 public class UtilTest {
 
@@ -19,24 +19,28 @@ public class UtilTest {
 	
 	@BeforeEach
 	void init() {
-		dados.limparListaPessoa();
-		dados.limparListaMedicamentos();
-		Medicamentos m = new Medicamentos("neosoro",EnumAdministracao.SUPOSITORIO);
-		m.addIndicacoes("congestão nasal");
-		m.addContraIndicacoes("alergia 1");
-		dados.cadastrarMedicamentos(m);
-		Pessoa p = new Pessoa("Matheus","congestão nasal");
-		p.addAlergias("alergia 1");
-		Pessoa p2 = new Pessoa("Luidi","congestão nasal");
-		p.addAlergias("alergia 2");
-		dados.cadastrarPessoas(p);
-		dados.cadastrarPessoas(p2);
+		dados.clearListPessoa();
+		dados.clearListMedicamentos();
+		Pessoa p1 = new Pessoa("Pessoa 1", "Dor");
+		p1.addAlergias("Diabete");
+	
+		Medicamentos m1 = new Medicamentos("Med 1", EnumAdministracao.ORAL);
+		m1.addIndicacoes("Dor");
+		
+		dados.pessoa.add(p1);
+		dados.medicamentos.add(m1);
 	}
 	
 	@Test
-	@DisplayName("Verifica se o medimento foi cadastrado")
-	public void verMedicamentoCadastrado() {
-		List<Medicamentos> medic = dados.listAllMedicamentos();
+	@DisplayName("Verifica se o preescrever está correto")
+	void preescreverOk() {
 		assertEquals(1, dados.listAllMedicamentos().size());
+		assertEquals(1, dados.listAllMedicamentos().size());
+		Pessoa p = dados.pessoa.get(0);
+		Medicamentos m = dados.medicamentos.get(0);
+		assertEquals(p.getName(), "Pessoa 1");
+		boolean verifica = dados.fazerPrescricao(p, m);
+		assertEquals(true, verifica);
+		
 	}
 }
