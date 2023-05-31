@@ -1,4 +1,4 @@
-package br.com.trier.aula_05_disciplinas.enums;
+package br.com.trier.aula_05_disciplinas;
 
 public enum EnumFormacao {
 

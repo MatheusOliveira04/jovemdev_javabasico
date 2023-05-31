@@ -15,11 +15,12 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Medicamentos {
 	
-	@Setter
 	@NonNull
+	@Setter 
 	private String name;
-	@Setter
+
 	@NonNull
+	@Setter 
 	private EnumAdministracao admin;
 	private List<String> indicacoes = new ArrayList<>();
 	private List<String> contraIndicacoes = new ArrayList<>();

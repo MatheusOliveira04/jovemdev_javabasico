@@ -2,6 +2,8 @@ package br.com.trier.aula_05_medicamentos.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -96,30 +98,19 @@ public class UtilTest {
 		Pessoa p = dados.getPessoa().get(1);
 		Medicamentos m = dados.getMedicamentos().get(1);
 		boolean verifica = dados.fazerPrescricao(p, m);	
-		assertEquals(false, verifica);
+		assertEquals(false, dados.fazerPrescricao(p, m));
 		assertEquals(0, p.getMedicamentos().size());
 	}
-	
-	@Test
-	@DisplayName("Acessar uma pessoa que não está cadastrada")
-	void isNotExistPessoa() {	
-	}
-	
-	@Test
-	@DisplayName("Acessar um medicamento que não está cadastrada")
-	void isNotExistMedicamento() {
-	}
-	
-	@Test
-	@DisplayName("Mostra que o tamanho da lista pessoa contém 2 pessoas")
-	void listPessoas() {
-		assertEquals(2, dados.getPessoa().size());
-	}
-	
+		
 	@Test
 	@DisplayName("Mostra que o tamanho da list medicamento contém 2 medicamentos")
-	void listMedicamentos() {
-		assertEquals(2, dados.getMedicamentos().size());
+	void listPessoas() {
+		List<Medicamentos> med = dados.listAllMedicamentos();
+		assertEquals(2, med.size());
+		assertEquals("Med 1", med.get(0).getName());
+		assertEquals("Med 2", med.get(1).getName());
 	}
+	
+
 	
 }
