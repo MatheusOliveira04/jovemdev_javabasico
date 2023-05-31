@@ -28,7 +28,7 @@ public class Pessoa {
 
 	public boolean addMedicamentos(Medicamentos medicamento) {
 		if(medicamento.verificaIndicacao(sintoma) == true 
-				&& medicamento.verificaContraIndicacoes(alergias) != true) {
+				&& !medicamento.verificaContraIndicacoes(alergias)) {
 		getMedicamentos().add(medicamento);
 		return true;
 		}

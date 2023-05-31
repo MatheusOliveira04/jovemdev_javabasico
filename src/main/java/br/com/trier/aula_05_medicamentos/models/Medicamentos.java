@@ -37,6 +37,7 @@ public class Medicamentos {
 	}
 	
 	public boolean verificaContraIndicacoes(List<String> alergias) {
-		return contraIndicacoes.contains(alergias);
+		return contraIndicacoes.stream().
+				anyMatch(alergias :: contains);
 	}
 }

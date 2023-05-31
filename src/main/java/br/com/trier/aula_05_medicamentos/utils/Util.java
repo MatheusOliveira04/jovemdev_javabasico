@@ -5,11 +5,13 @@ import java.util.List;
 
 import br.com.trier.aula_05_medicamentos.models.Medicamentos;
 import br.com.trier.aula_05_medicamentos.models.Pessoa;
+import lombok.Getter;
 
+@Getter
 public class Util {
 
-	public List<Pessoa> pessoa = new ArrayList<Pessoa>();
-	public List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
+	List<Pessoa> pessoa = new ArrayList<Pessoa>();
+	List<Medicamentos> medicamentos = new ArrayList<Medicamentos>();
 
 	public void cadastrarMedicamentos(Medicamentos m) {
 		medicamentos.add(m);
@@ -29,10 +31,9 @@ public class Util {
 
 	public boolean fazerPrescricao(Pessoa pessoa, Medicamentos medicamento) {
 		if (existeMedicamento(medicamento) == true && existePessoa(pessoa) == true) {
-			pessoa.addMedicamentos(medicamento);
-			return true;
+		return pessoa.addMedicamentos(medicamento);
 		} 
-			return false;	
+		return false;
 	}
 
 	public List<Pessoa> listAllPessoa() {
