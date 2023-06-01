@@ -26,5 +26,25 @@ public class Medicamentos extends Produto{
 		}
 	}
 	
+	private boolean verificaEstoque() {
+		if(getEstoque() > 0) {
+			return true;
+		}
+		return false;
+	}
 	
+	private boolean verificaEstoqueMaiorRetirar(int quantidade) {
+		if(getEstoque() >= quantidade) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean baixarEstoque(int quantidade) {
+		if(verificaEstoque() && verificaEstoqueMaiorRetirar(quantidade)) {
+		return super.baixarEstoque(quantidade);
+		}
+		return false;
+	}
 }
