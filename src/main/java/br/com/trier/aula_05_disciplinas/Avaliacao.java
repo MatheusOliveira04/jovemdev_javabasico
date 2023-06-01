@@ -8,10 +8,11 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class Aluno {
+public class Avaliacao {
 
 	@NonNull
-	private String nome;
-	private List<Disciplina> disciplina;
-	private List<Avaliacao> avaliacao;
+	private Aluno aluno;
+	@NonNull
+	private Disciplina disciplina;
+	private List<Double> notas;
 }
