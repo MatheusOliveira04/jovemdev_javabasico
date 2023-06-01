@@ -1,4 +1,4 @@
-package br.com.trier.aula_06.contas;
+package br.com.trier.aula_06_contas;
 
 import lombok.Getter;
 
@@ -29,7 +29,7 @@ public class ContaEspecial extends Conta{
 	}
 	
 	public boolean limiteParaSacar(Double valorSacar) {
-		if(valorSacar <= getLimite()) {
+		if(valorSacar <= getLimite() + getSaldo()) {
 			return true;
 		}
 		return false;

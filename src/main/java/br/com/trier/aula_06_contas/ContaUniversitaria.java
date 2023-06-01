@@ -1,4 +1,4 @@
-package br.com.trier.aula_06.contas;
+package br.com.trier.aula_06_contas;
 
 public class ContaUniversitaria extends Conta{
 	
@@ -8,7 +8,7 @@ public class ContaUniversitaria extends Conta{
 
 	@Override
 	public boolean deposito(Double depositar) {
-		if(verificaMaximoSaldo()) {
+		if(verificaMaximoSaldo(depositar)) {
 		return super.deposito(depositar);
 		}
 		return false;
@@ -24,7 +24,7 @@ public class ContaUniversitaria extends Conta{
 
 	@Override
 	public boolean transferencia(double valor, Conta contaDestino) {
-		if(deposito(valor)) {
+		if(verificaSaldo(valor) && (contaDestino.getSaldo() + valor) <= 2000.0) {
 		return super.transferencia(valor, contaDestino);
 		}
 		return false;
@@ -37,8 +37,8 @@ public class ContaUniversitaria extends Conta{
 		return false;
 	}
 	
-	public boolean verificaMaximoSaldo() {
-		if(getSaldo() <= 2000.0) {
+	public boolean verificaMaximoSaldo(Double depositar) {
+		if(getSaldo() + depositar <= 2000.0) {
 			return true;
 		}
 		return false;

@@ -1,4 +1,4 @@
-package br.com.trier.aula_06.contas;
+package br.com.trier.aula_06_contas;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

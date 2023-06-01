@@ -1,4 +1,4 @@
-package br.com.trier.aula_06.contas;
+package br.com.trier.aula_06_contas;
 
 public class ContaCorrente extends Conta{
 
