@@ -26,7 +26,7 @@ public class Escola {
 	}
 	
 	public boolean cadastrarAluno(Aluno aluno) {
-		if(existeDisciplina(aluno)) {
+		if(!existeDisciplina(aluno)) {
 		alunos.add(aluno);
 		return true;
 		}
@@ -43,7 +43,4 @@ public class Escola {
 				.anyMatch(p -> p.equals(disciplina.getProfessor()));
 	}
 	
-	public void clearProfessor() {
-		getProfessores().clear();
-	}
 }
